@@ -12,4 +12,7 @@ Publicul tinta
   Studenti si Autodidacti: Cei care vor sa treaca de la teorie la practica intr-un anumit domeniu.
 
    
-  Echipa: Demeter, formata dintr-un singur student numit Demeter Andrei-Daniel
+  Echipa: Demeter, formata dintr-un singur student numit Demeter Andrei-Daniel.
+
+
+  Bibliografie: Google si Gemini AI.
