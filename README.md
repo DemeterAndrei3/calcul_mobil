@@ -1,18 +1,41 @@
-# Mock Training (Simulator de tranzactionare)
-   Ca si proiect pentru cursul Calcul mobil, as vrea sa fac in domeniul burselor, o aplicatie de Mock Trading (Simulator de tranzactionare).
-O aplicatie de Mock Trading este o aplicatie de tip "Paper Trading" care permite utilizatorilor sa cumpere si sa vanda actiuni sau criptomonede folosind bani virtuali pe baza datelor reale din piata.
+# Visit Maramureș
 
-Viziunea si obiectivul
-  Scopul proiectului este dezvoltarea unei platforme digitale de simulare si instruire (Mock Training) care permite utilizatorilor sa isi exerseze abilitatile practice intr-un mediu controlat, sigur si interactiv, inainte de a le aplica in lumea reala. 
-   Aplicatia transforma invatarea teoretica in experienta practica prin scenarii simulate, oferind feedback instantaneu generat de performanta utilizatorului.
+Aplicație Android demonstrativă pentru tema CMO – Laboratorul 05.
 
-Publicul tinta
-  Candidati la interviuri:Persoane care vor sa simuleze interviuri: Persoane care vor sa simuleze interviuri de angajare (tehnice, de HR, de management).
-  Companii (B2B): Firme care doresc sa isi testeze si sa isi instruiasca angajatii (ex: simulari de vanzari, suport clienti, proceduri de urgenta).
-  Studenti si Autodidacti: Cei care vor sa treaca de la teorie la practica intr-un anumit domeniu.
+## Tehnologii
+- Kotlin
+- Jetpack Compose + Material 3
+- Navigation Compose 2.8.5
+- Kotlin Serialization pentru rute type-safe
 
-   
-  Echipa: Demeter, formata dintr-un singur student numit Demeter Andrei-Daniel, care se ocupa de implementare, interfata și testare.
+## Rulare
+1. Deschide Android Studio.
+2. Alege **Open** și selectează folderul `VisitMaramures`.
+3. Așteaptă sincronizarea Gradle.
+4. Pornește un emulator Android (API 26 sau mai nou) sau conectează un telefon.
+5. Apasă Run.
 
+## Date de autentificare
+Autentificarea este simulată. Orice utilizator și parolă necompletate sunt acceptate.
 
-  Bibliografie: Google si Gemini AI.
+## Diagrama fluxului de navigare
+
+```mermaid
+flowchart TD
+    A[LoginRoute] -->|utilizator + parolă nevidă| B[CategoriesRoute]
+    B -->|selectează obiectiv, transmite id:Int| C[PlaceDetailRoute]
+    C -->|Back / săgeată| B
+    B <-->|tab Categorii / Favorite| D[FavoritesRoute]
+    B <-->|tab Categorii / Despre| E[AboutRoute]
+    D -->|selectează obiectiv, transmite id:Int| C
+    C -->|Back| D
+```
+
+- Login este eliminat din back stack cu `popUpTo<LoginRoute> { inclusive = true }`.
+- Ecranul de detaliu primește doar `id: Int`, apoi citește obiectul din `PlacesRepository`.
+- Ecranele nu primesc `NavController`; navigarea este transmisă prin lambda-uri.
+- `selectedCategory` și favoritele folosesc `rememberSaveable`.
+- Tab-urile folosesc `saveState`, `restoreState` și `launchSingleTop`.
+
+## Date demonstrative
+Aplicația conține 9 obiective: 3 Sport, 3 Muzee și 3 Restaurante. Verifică înainte de predare descrierile și datele locale și completează numele autorului în ecranul Despre.
